@@ -5,6 +5,9 @@ class ChallongeAPI:
         self.page = page
         self.slug = page.split('/')[-1]
 
+        if page.split('.')[1] == 'challonge':
+            self.slug = page.split('.')[0].split('//')[1] + '-' + self.slug
+
         self.username = CHALLONGE_USERNAME
         self.api_key = CHALLONGE_API_KEY
 
