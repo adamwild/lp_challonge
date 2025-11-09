@@ -2,8 +2,14 @@
 
 ## Installation
 
-Clone the repo locally and open `CONFIG_TO_RENAME.py`. Head over to [challonge](https://challonge.com/settings/developer) to get you API key (use the v1 version).
+Clone the repo locally and open `CONFIG_TO_RENAME.py`. Head over to [challonge](https://challonge.com/settings/developer) to get your API key (use the v1 version).
 Complete the required information and rename the file to `config.py`.
+
+Install the required packages with:
+
+```bash
+pip install -r requirements.txt
+```
 
 ## Usage
 
