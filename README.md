@@ -70,6 +70,9 @@ powerpeople, 7600271
 |p2=RaGnaR|p2flag=au|p2race=z|p2team=team 1nfekted
 }}
 
+Following players are unknown to LP but are tracked by the csv files
+aegiseevee
+
 Following players are untracked, please add them to one of the csv files:
 leroy89, 7587579
 ```
