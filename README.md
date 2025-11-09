@@ -16,6 +16,10 @@ pip install -r requirements.txt
 ```bash
 python main.py -ch <challonge_url>
 ```
+or 
+```bash
+python main.py -ch <tournament_id>
+```
 
 For instance:
 
@@ -43,6 +47,31 @@ aegiseevee
 Following players are untracked, please add them to one of the csv files:
 guilliman, 7123652
 powerpeople, 7600271
+```
+
+```bash
+>>> python main.py -ch 17049128
+
+|p1=herO|p1link=HerO (Kim Joon Ho)
+|p2=MaxPax
+|p3=Solar
+|p4=Creator
+|p5=Shameless
+|p6=YoungYakov
+|p7=Nicoract
+|p8=Wayne
+|p9=MilkiCow
+|p10=Greenert
+|p11=Bulmyeolja
+|p12=Patches|p12link=Patches (American player)
+
+{{ParticipantTable|hidden=1
+|p1=sophisticate|p1race=z
+|p2=RaGnaR|p2flag=au|p2race=z|p2team=team 1nfekted
+}}
+
+Following players are untracked, please add them to one of the csv files:
+leroy89, 7587579
 ```
 
 There are 4 different outputs, based on what table the player belongs in:

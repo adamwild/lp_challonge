@@ -3,13 +3,21 @@ class ChallongeAPI:
         from config import CHALLONGE_USERNAME, CHALLONGE_API_KEY
 
         self.page = page
-        self.slug = page.split('/')[-1]
-
-        if page.split('.')[1] == 'challonge':
-            self.slug = page.split('.')[0].split('//')[1] + '-' + self.slug
-
+        self.set_slug_or_id()
+        
         self.username = CHALLONGE_USERNAME
         self.api_key = CHALLONGE_API_KEY
+
+    def set_slug_or_id(self):
+        """If a challonge url is not provided, we assume it is the tournament id directly"""
+        if "challonge" not in self.page:
+            self.slug = self.page
+            return
+        
+        self.slug = self.page.split('/')[-1]
+
+        if self.page.split('.')[1] == 'challonge':
+            self.slug = self.page.split('.')[0].split('//')[1] + '-' + self.slug
 
     def get_participants(self):
         import requests
@@ -25,10 +33,21 @@ class ChallongeAPI:
             )
         }
 
-        response = requests.get(url, auth=HTTPBasicAuth(self.username, self.api_key), headers=headers)
-        
-        # Will raise an error if status != 200
-        response.raise_for_status()
+        try:
+            response = requests.get(url, auth=HTTPBasicAuth(self.username, self.api_key), headers=headers)
+            
+            # Will raise an error if status != 200
+            response.raise_for_status()
+
+        except requests.exceptions.HTTPError as http_err:
+            if response.status_code == 404:
+                print("404 Client Error")
+                print("Please retry using 'tournament_id' instead of the url.")
+                print("You should find this information on the source code of the page. It is a code number found after 'tournament_id'.")
+                exit(1)
+            else:
+                # Re-raise other HTTP errors
+                raise
 
         participants = response.json()
         # player_names = [p["participant"]["name"] for p in participants]
